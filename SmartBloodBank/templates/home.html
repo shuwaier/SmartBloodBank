@@ -1,0 +1,300 @@
+{% extends "layout2.html"  %}
+{% block content %}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+ <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome/css/font-awesome.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">  
+
+
+    <!-- HEADER -->
+      <section id="header"> 
+
+          <div class="container" style="padding:0px 0px 0px 0px">
+
+              <div class="row">
+                  <div class="col-md-6 wow fadeIn" data-wow-delay="1s" data-wow-duration="2s">
+                    <img src="static/img/logo.png" class="img-fluid"/>
+                      <h2>Make a Difference Through Volunteering Now</h2>
+                      <p class="lead" style="font-family: 'Old Standard TT', serif; font-size:20px">“You have not lived until you have done something for someone who can never repay you.” – John Bunyan</p>
+                      <p>Everywhere, blood and blood products are needed for routine and emergency surgery, including life-saving treatment for growing numbers of people injured in traffic accidents, and for treating congenital blood disorders.</p>
+                  </div>
+                  {% if current_user.is_authenticated %}
+                        {{ pass }} 
+                        {% else %}
+                  <div class="col-md-6 header-right hidden-sm-down wow fadeIn" data-wow-delay="1.5s" data-wow-duration="2s" style="margin:15px 0px">
+                      <form>
+                      
+                        <a href="{{ url_for('users.login') }}" class="btn btn-outline-info btn-block btn-lg mb-5">Log in</a>
+                        <a href="{{ url_for('users.donor_register') }}" class="btn btn-outline-info btn-block btn-lg">Sign up</a>
+                      
+                      </form>
+                  </div>
+                  {% endif %}
+              </div>
+
+              <div class="row wow swing" data-wow-delay="2s">
+                    <div class="col-md-12 text-xs-center">
+                        <a href="#who"><i class="fa fa-chevron-down fa-3x"></i></a>
+                    </div>
+              </div>
+
+          </div>
+
+      </section>
+
+    <!-- END HEADER -->
+
+
+
+
+    <!-- WHO -->
+
+      <section id="who">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-6 wow fadeInLeft" data-wow-delay="0.5s" data-wow-duration="1s">
+                    <h2>Who we are...</h2>
+                    <hr align="left" width="50%">
+                    <p class="lead">The goal is to assist in serving donors and patient who need blood in the easiest, fastest and convenient way.</p>
+                    <p>The system can show the distribution of camps in various part of the country and provide locations of the donation camps and allow donors to contact(Email) with these donations camps for more information and questions that need to be answered, and allow to leader of Campaign to add a new donation camp to the list of the donation camps that the system have so that it would be available for all donors to see.</p>
+                    
+                </div>
+
+                <div class="col-md-6 wow fadeInRight" data-wow-delay="0.5s" data-wow-duration="1s">
+                    <img class="img-fluid" src="static/img/clipart.png"/>
+                </div>
+
+            </div>
+        </div>
+      </section>
+
+    <!-- END WHO -->
+
+    <!-- Advantages -->
+
+      <section id="Advantages">
+        <div class="container text-xs-center wow zoomIn" data-wow-delay="0.3s">
+
+            <div class="row">
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-8">
+                    <h2>Advantages of Blood Donation</h2>
+                    <hr width="30%">
+                </div>
+            </div>
+
+            <div class="container text-xs-center wow zoomIn">
+            <div class="row">
+                <div class="col-md-12" style="font-size: 22px">
+                       <div class="col-md-4">
+                         <img src="{{ url_for('static', filename='img/logo-advan.png') }}" style="width:248px;height:270px;">
+                         
+                       </div>
+                        <div class="col-md-4">
+                            <ul >
+                                <li style="margin : 1.5rem">Refreshing the blood system </li>
+                                <li style="margin : 1.5rem">Stimulating the bone marrow to produce new red blood cells, white blood cells and platelet</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                               <ul>
+                                <li style="margin : 1.5rem">Reducing the risk of cardiovascular diseases</li>
+                                <li style="margin : 1.5rem">Getting rid of excess iron accumulated in our body which may lead to hemochromatosis.</li>
+                            </ul>
+                        </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+      </section>
+
+    <!-- END Advantages -->
+
+
+    <!-- WHY -->
+
+      <section id="why">
+        <div class="container text-xs-center">
+
+            <div class="row">
+                <div class="col-md-12 wow fadeIn">
+                    <h2>Why work with us?</h2>
+                    <hr width="30%">
+                    <p>Because we are the best at what we do!</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 wow fadeIn" data-wow-delay="0.2s">
+                    <i class="fa fa-thumbs-o-up fa-3x"></i>
+                    <h3>patient Satisfaction</h3>
+                    <p>Patients are satisfied with how many volunteers are willing to help people who are in need of blood supplies and they depend on the availability of it. </p>
+                </div>
+                <div class="col-md-6 wow fadeIn" data-wow-delay="0.3s">
+                    <i class="fa fa-line-chart fa-3x"></i>
+                    <h3>Instant Results</h3>
+                    <p> The doner can find campaigns fast and close to him with their locations, to go and donate, and the campaign leader can add his campaign to our campaigns list, so other people how are willing to donate can find it.</p>
+                </div>
+                </div>
+            </div>
+
+      </section>
+
+    <!-- END WHY -->
+
+    <!-- CUSTOMERS -->
+
+      <section id="customers">
+        <div class="container text-xs-center wow fadeInUp" data-wow-delay="0.2s">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <h2>Patients </h2>
+                    <hr width="30%">
+                    <p>Read what some of our Patients had to say to Donors...</p>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div id="quotes" class="carousel slide" data-ride="carousel">
+                      <ol class="carousel-indicators" >
+                        <li data-target="#quotes" data-slide-to="0" class="active"></li>
+                        <li data-target="#quotes" data-slide-to="1"></li>
+                        <li data-target="#quotes" data-slide-to="2"></li>
+                      </ol>
+                      <div class="carousel-inner" role="listbox" style="font-family: 'Old Standard TT', serif;">
+                        <div class="carousel-item active">
+                          <blockquote class="blockquote col-md-4">
+                          <p class="m-b-0">“I am deeply touched and humbled by the show of support and compassion you gave through your blood donations. Thank you.”</p>
+                          <footer class="blockquote-footer">Patient <cite title="Source Title">Unknown</cite></footer>
+                        </blockquote>
+                            <blockquote class="blockquote col-md-4">
+                          <p class="m-b-0">“I don’t know whose transfused blood I received, so as far as I’m concerned, every blood donor saved my life. From me and my family- thank you for taking a small amount of your time to give me the rest of my life.”</p>
+                          <footer class="blockquote-footer">Patient <cite title="Source Title">Unknown</cite></footer>
+                        </blockquote>
+                            <blockquote class="blockquote col-md-4">
+                          <p class="m-b-0">“No words can express how thankful I am for the blood donation I received from your group. My daughter survived the medical procedure because of your help.”</p>
+                          <footer class="blockquote-footer">Patient <cite title="Source Title">Unknown</cite></footer>
+                        </blockquote>
+                        </div>
+                        <div class="carousel-item">
+                          <blockquote class="blockquote col-md-4">
+                          <p class="m-b-0">“Although you do not know me, I would like to say thanks from to you the bottom of my heart. Your blood donation saved my life.”</p>
+                          <footer class="blockquote-footer">Patient <cite title="Source Title">Unknown</cite></footer>
+                        </blockquote>
+                            <blockquote class="blockquote col-md-4">
+                          <p class="m-b-0">“Thanks to all who responded to the call for blood donation last week. I am deeply touched by your quick response.”</p>
+                          <footer class="blockquote-footer">Patient <cite title="Source Title">Unknown</cite></footer>
+                        </blockquote>
+                            <blockquote class="blockquote col-md-4">
+                          <p class="m-b-0">“As blood donations are needed on a daily basis, we are truly thankful for your regular blood donations. We highly appreciate your initiative to come </p>
+                          <footer class="blockquote-footer">Patient <cite title="Source Title">Unknown</cite></footer>
+                        </blockquote>
+                        </div>
+                        <div class="carousel-item">
+                          <blockquote class="blockquote col-md-4">
+                          <p class="m-b-0">“Because of your generosity, lives will be saved. Thank you for your blood donation.”</p>
+                          <footer class="blockquote-footer">Patient <cite title="Source Title">Unknown</cite></footer>
+                        </blockquote>
+                            <blockquote class="blockquote col-md-4">
+                          <p class="m-b-0">“I am deeply thankful for your blood donation of which I was the recipient. If not for your generosity, I would not have been alive today.”</p>
+                          <footer class="blockquote-footer">Patient <cite title="Source Title">Unknown</cite></footer>
+                        </blockquote>
+                            <blockquote class="blockquote col-md-4">
+                          <p class="m-b-0">“Last week, I received a new lease in life. Thank you for your blood donation.”</p>
+                          <footer class="blockquote-footer">Patient <cite title="Source Title">Unknown</cite></footer>
+                        </blockquote>
+                        </div>
+                      </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+      </section>
+
+    <!-- END CUSTOMERS -->
+
+    <!-- SOCIAL -->
+
+      <section id="social">
+        <div class="container wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="1s">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <h2>Connect with us:</h2>
+                    <hr align="left" width="50%">
+
+                </div>
+
+                <div class="col-md-6">
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+      </section>
+
+    <!-- END SOCIAL -->
+
+
+
+    <!-- FOOTER -->
+
+      <section id="footer">
+        <div class="container wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="1.5s">
+
+            <div class="row">
+                <div class="col-md-8 col-sm-6">
+                    <h3>About Smart Blood Bank</h3>
+                    <p>Muath Fahad Alotaibi 436100209</p>
+                    <p>Abdullah Alshuwaier 436106269</p>
+                    <p>Abdullah Alshuwaier 436106269</p>
+                    <p>Abdullah Alshuwaier 436106269</p>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <h3>Say hello:</h3>
+                    <ul class="list-unstyled">
+                        <li><p><strong><i class="fa fa-map-marker"></i> Address:</strong> Saudi Arabia, Riyadh, King Saud University</p></li>
+                        <li><p><strong><i class="fa fa-envelope"></i> Email:</strong> <a href="#">smartbloodbank@gmail.com</a></p></li>
+                        <li><p><strong><i class="fa fa-phone"></i> Phone:</strong> +966552265565</p></li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+      </section>
+
+    <!-- END FOOTER -->
+
+
+     <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
+
+      <script src="static/js/wow.min.js"></script>
+              <script>
+              new WOW().init();
+              </script>
+
+
+{% endblock content %}

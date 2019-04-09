@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + camp.image_file) }}">
+            <div class="media-body">
+            <div class="article-metadata">
+
+            <div><a  class="badge badge-pill badge-info" href="{{ url_for('camp.camp_detail', campId=camp.id) }}">{{ camp.name.capitalize() }}</a></div>
+            <a  class="badge badge-pill badge-default" href="{{ url_for('users.leader', userId=camp.leader.id) }}">Leader by  {{ camp.leader.username }}</a>
+
+            </div>
+            <div>
+                <img height="17" width="17" src="{{ url_for('static', filename='img/blood.png')}}">
+                <span class="font-weight-bold h6">Needed Blood: </span>
+                <span class="h5"> {{ camp.needed_blood }}</span>
+
+                <br>
+                <span class="fa fa-envelope"></span>
+                <span class="font-weight-bold h6">Email: </span>
+                <span class="h6"> {{ camp.email }}</span>
+                <hr>
+                <span>&nbsp; &nbsp;</span>
+                <span class="font-weight-bold h6">Address: </span>
+                <span class="h6">{{ camp.city.capitalize() }}</span>
+                <br>
+
+                
+                <span class="fa fa-phone height"> </span>
+                <span class="font-weight-bold h6">Phone: </span>
+                <span class="h6">{{ camp.phone}}</span>
+                <br>
+                <img height="20" width="20" src="{{ url_for('static', filename='img/google.PNG')}}">
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="https://maps.google.com/?q={{camp.lat}},{{camp.lng}}" target="_blank">Location</a>
+            </div>
+            
+      </article>
+
+
+        <h2 class="h2">Comments</h2>
+        <hr>
+            {% for comment in comments %}
+                <div style="background-color:lightgrey" class=" rounded text-whites toast-body p-3 mb-2 bg-faded">
+                    <div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
+                        <div class="toast-header">
+                            <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + comment.commentUser.image_file) }}">
+                            <span><strong>by</strong>  </span><a  class="badge badge-primary" href="{{ url_for('users.leader', userId=camp.leader.id) }}">{{ camp.leader.username }}</a>
+                            <small>Here Date Sumbitted</small>
+                            
+                        </div>
+                        <hr style="border:0.75px solid black ">
+                        <div>
+                            {{ comment.comment }}
+                        </div>
+                    </div>
+                </div>  
+            {% endfor %}
+
+ 
+        {% if current_user.is_authenticated %}    
+            <div class="content-section">
+                    <form method="post" action="", enctype="multipart/form-data">
+                        {{ form.hidden_tag() }} 
+                        <fieldset class="form-group">
+                                <div class="form-group">
+                                        {{ form.comment.label(class="form-control-label") }}
+            
+                                        {% if form.comment.errors %}
+                                            {{ form.comment(class="form-control form-control-lg is-invalid") }}
+                                            <div class="text-danger">
+                                                {% for error in form.comment.errors %}
+                                                    <span>{{ error }}</span>
+                                                {% endfor %}
+                                            </div>
+                                        {% else %}    
+                                            {{ form.comment(class="form-control form-control-lg") }}
+                                        {% endif %}
+                                </div>                
+                        </fieldset>    
+                        <div class="form-group">
+                        {{ form.submit(class="btn btn-outline-info") }}
+                        </div>
+                    </form>
+                    
+                </div>
+        {% endif %}
+
+{% endblock content %}

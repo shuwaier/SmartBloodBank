@@ -1,0 +1,204 @@
+html,
+body {
+    height:100%;
+    font-family: 'Raleway', sans-serif;
+}
+
+.btn {
+    transition: all 0.3s ease-in-out;
+}
+
+@media(max-width:768px) {
+    #header {
+        text-align:center;
+    }
+    #header img {
+        margin:20% auto 0;
+    }
+    #social {
+        text-align:center;
+    }
+    #social hr, #who hr {
+        margin:8% auto;
+    }
+    #who {
+        text-align:center;
+    }
+    #who img {
+        margin-top:15%;
+    }
+    #footer {
+        text-align:center;
+    }
+}
+
+/*HEADER*/
+
+#header {
+    padding: 10px;
+    background:url('../img/pattern-space.jpg') center center no-repeat;
+    background-size:cover;
+    height:100%;
+    color:white;
+    display:flex;
+    align-items:center;
+}
+
+#header img {
+    padding:0 0 20px;
+    width:80%;
+}
+
+#header .header-right {
+    background-color:rgba(0,0,0,0.5);
+    padding:30px;
+    border-radius:10px;
+}
+
+#header .fa {
+    margin:5% 0;
+}
+
+#header a .fa {
+    color:#fff;
+}
+
+#header a .fa:hover {
+    color:#ccc;
+}
+
+/*SOCIAL*/
+
+#social {
+    padding:4.25rem 0;
+}
+
+#social .fa {
+    font-size:1.5em;
+    color:#9e004f;
+    border:2px solid #9e004f;
+    width:60px;
+    height:60px;
+    border-radius:30%;
+    text-align:center;
+    padding:30% 0;
+    margin-top:10px;
+    transition:all 0.4s ease-in-out;
+}
+
+#social .fa:hover {
+    color:#fff;
+    background:#9e004f;
+}
+
+/*WHO*/
+
+#who {
+    padding:5rem 0;
+    background-color:#f6f6f6;
+}
+
+#who .btn-who {
+    background-color:#9e004f;
+    color:#fff;
+    width:50%;
+}
+
+#who .btn-who:hover {
+    background-color:transparent;
+    border:1px solid #be2835;
+    color:#be2835;
+}
+
+/*WORK*/
+
+#work {
+    padding:5rem 0;
+}
+
+#work .work-img {
+    position:relative;
+}
+
+#work .work-img .img-overlay {
+    position:absolute;
+    top:0;
+    left:0;
+    background-color:rgba(0,0,0,0.5);
+    width:100%;
+    height:100%;
+    background-image: url('../img/eye.png');
+    background-position:center center;
+    background-repeat:no-repeat;
+    opacity:0;
+    z-index:0;
+    transition:all 0.3s ease-in-out;
+}
+
+#work .work-img .img-overlay:hover {
+    opacity:1;
+    z-index:1;
+}
+
+/*WHY*/
+
+#why {
+    padding:5rem 0;
+    background-color:#f6f6f6;
+}
+
+#why .fa {
+    color:#9e004f;
+    padding:15px 0;
+}
+
+/*CUSTOMERS*/
+
+#customers {
+    padding:5rem 0;
+    overflow:hidden;
+}
+
+#customers .carousel-indicators li {
+    background-color:#9e004f;
+}
+
+#customers .carousel-inner {
+    margin-bottom:50px;
+}
+
+#customers .carousel-indicators {
+    margin-bottom:-50px;
+}
+
+
+/*Advantages*/
+
+#Advantages {
+    padding:5rem 0;
+}
+
+
+/*FOOTER*/
+
+#footer {
+    padding:2rem 0;
+    background-color:#484848;
+    color:white;
+}
+
+#footer a {
+    color:white;
+}
+
+#footer .fa {
+    padding:0 5px;
+}
+
+
+.flash {
+    padding-top: 1000px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+}

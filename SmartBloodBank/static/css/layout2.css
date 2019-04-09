@@ -1,0 +1,51 @@
+html,
+body {
+    height:100%;
+    font-family: 'Raleway', sans-serif;
+}
+
+.btn {
+    transition: all 0.3s ease-in-out;
+}
+
+@media(max-width:768px) {
+    #header {
+        text-align:center;
+    }
+    #header img {
+        margin:20% auto 0;
+    }
+    #social {
+        text-align:center;
+    }
+    #social hr, #who hr {
+        margin:8% auto;
+    }
+    #who {
+        text-align:center;
+    }
+    #who img {
+        margin-top:15%;
+    }
+    #footer {
+        text-align:center;
+    }
+}
+
+.navbar {
+  background-color:rgba(21, 31, 33, 0.5) !important;
+  border-bottom: 1px solid #dedede;
+  font-family: 'Raleway', sans-serif;
+}
+
+.navbar .nav .nav-item .nav-link {
+  color: #d1d1d1;
+}
+
+.navbar .nav .nav-item .nav-link:hover {
+  color: #fff;
+}
+
+.navbar-toggler {
+    color: white;
+}

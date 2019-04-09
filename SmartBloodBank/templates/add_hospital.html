@@ -1,0 +1,185 @@
+{% extends "layout.html"  %}
+    {% block content %}
+    <style>
+        #myMap {
+      height: 350px;
+      width: 680px;
+   }
+       </style>
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1Dk-7B5pN8Pfqo3oSKWra0a1VAihgIJQ&sensor=false"></script>
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+   
+   <script type="text/javascript">
+   var map;
+   var marker;
+   var myLatlng = new google.maps.LatLng(24.72308021047588,46.61991037233133);
+   var geocoder = new google.maps.Geocoder();
+   var infowindow = new google.maps.InfoWindow();
+   function initialize(){
+   var mapOptions = {
+   zoom: 12,
+   center: myLatlng,
+   mapTypeId: google.maps.MapTypeId.ROADMAP
+   };
+   
+   map = new google.maps.Map(document.getElementById("myMap"), mapOptions);
+   
+   marker = new google.maps.Marker({
+   map: map,
+   position: myLatlng,
+   draggable: true
+   });
+   
+   geocoder.geocode({'latLng': myLatlng }, function(results, status) {
+       if (status == google.maps.GeocoderStatus.OK) {
+           if (results[0]) {
+               $('#latitude,#longitude').show();
+               $('#address').val(results[0].formatted_address);
+               $('#latitude').val(marker.getPosition().lat());
+               $('#longitude').val(marker.getPosition().lng());
+               infowindow.setContent(results[0].formatted_address);
+               infowindow.open(map, marker);
+           }
+       }
+   });
+   
+   google.maps.event.addListener(marker, 'dragend', function() {
+       geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
+           if (status == google.maps.GeocoderStatus.OK) {
+               if (results[0]) {
+                   $('#address').val(results[0].formatted_address);
+                   $('#latitude').val(marker.getPosition().lat());
+                   $('#longitude').val(marker.getPosition().lng());
+                   infowindow.setContent(results[0].formatted_address);
+                   infowindow.open(map, marker);
+                }
+           }
+       });
+   });
+   }
+   google.maps.event.addDomListener(window, 'load', initialize);
+   </script>
+   
+
+    <div class="content-section">
+        <form method="post" action="", enctype="multipart/form-data">
+            {{ form.hidden_tag() }} 
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Add Hospital</legend>
+                    <div class="form-group">
+                            {{ form.name.label(class="form-control-label") }}
+
+                            {% if form.name.errors %}
+                                {{ form.name(class="form-control form-control-lg is-invalid") }}
+                                <div class="text-danger">
+                                    {% for error in form.name.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}    
+                                {{ form.name(class="form-control form-control-lg") }}
+                            {% endif %}
+                    </div>
+                    <div class="form-group">
+                            {{ form.email.label(class="form-control-label") }}
+                            {% if form.email.errors %}
+                                {{ form.email(class="form-control form-control-lg is-invalid") }}
+                                <div class="text-danger">
+                                    {% for error in form.email.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}    
+                                {{ form.email(class="form-control form-control-lg", placeholder="example@example.com") }}
+                            {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.needed_blood.label(class="form-control-label") }}
+                        {% if form.needed_blood.errors %}
+                            {{ form.needed_blood(class="form-control form-control-lg is-invalid") }}
+                            <div class="text-danger">
+                                {% for error in form.needed_blood.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}    
+                            {{ form.needed_blood(class="form-control form-control-lg") }}
+                        {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.city.label(class="form-control-label") }}
+                    {% if form.city.errors %}
+                        {{ form.city(class="form-control form-control-lg is-invalid") }}
+                        <div class="text-danger">
+                            {% for error in form.city.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}    
+                        {{ form.city(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div  id="myMap"></div>
+                <input id="address"  class="form-control form-control-lg" type="text" style="padding:10px 1px, width:600px;"/><br/>
+
+                 <div class="form row">
+                    <div class="col-6">
+
+                        {% if form.lat.errors %}
+                            {{ form.lat(class="form-control form-control-lg is-invalid") }}
+                            <div class="text-danger">
+                                {% for error in form.lat.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.lat(id="latitude", class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="col-6">
+                   
+                        {% if form.lng.errors %}
+                            {{ form.lng(class="form-control form-control-lg is-invalid") }}
+                            <div class="text-danger">
+                                {% for error in form.lng.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.lng(id="longitude", class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                  </div>
+                <div class="form-group">
+                    {{ form.phone.label(class="form-control-label") }}
+                    
+                    {% if form.phone.errors %}
+                        {{ form.phone(class="form-control form-control-lg is-invalid") }}
+                        <div class="text-danger">
+                            {% for error in form.phone.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}    
+                        {{ form.phone(class="form-control form-control-lg") }}
+                    {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.picture.label() }}
+                {{ form.picture(class="form-control-file")}}
+                {% if form.picture.errors %}
+                    {% for error in form.picture.errors %}
+                        <span class="text-danger">{{ error }}</span><br>
+                    {% endfor %}
+                {% endif %}
+        </div>
+            </fieldset>    
+            <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+        
+    </div>
+
+
+    {% endblock content %}

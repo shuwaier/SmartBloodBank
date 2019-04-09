@@ -1,0 +1,48 @@
+{% extends "layout.html"  %}
+    {% block content %}
+
+    <div class="content-section">
+        <form method="post" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Search</legend>
+                    <div class="form-group">
+                            {{ form.choose.label(class="form-control-label") }}
+
+                            {% if form.choose.errors %}
+                                {{ form.choose(class="form-control form-control-lg is-invalid") }}
+                                <div class="text-danger">
+                                    {% for error in form.choose.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.choose(class="form-control form-control-lg") }}
+                            {% endif %}
+                    </div>
+                    <div class="form-group">
+                            {{ form.city.label(class="form-control-label") }}
+
+                            {% if form.city.errors %}
+                                {{ form.city(class="form-control form-control-lg is-invalid") }}
+                                <div class="text-danger">
+                                    {% for error in form.city.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.city(class="form-control form-control-lg") }}
+                            {% endif %}
+                    </div>
+
+
+            </fieldset>
+            <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+
+    </div>
+
+
+    {% endblock content %}
